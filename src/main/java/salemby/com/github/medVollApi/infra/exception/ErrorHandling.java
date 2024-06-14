@@ -1,4 +1,4 @@
-package salemby.com.github.medVollApi.infra;
+package salemby.com.github.medVollApi.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
