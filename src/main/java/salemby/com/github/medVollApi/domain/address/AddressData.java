@@ -1,4 +1,4 @@
-package salemby.com.github.medVollApi.address;
+package salemby.com.github.medVollApi.domain.address;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

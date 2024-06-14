@@ -1,4 +1,4 @@
-package salemby.com.github.medVollApi.address;
+package salemby.com.github.medVollApi.domain.address;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

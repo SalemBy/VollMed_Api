@@ -1,8 +1,7 @@
-package salemby.com.github.medVollApi.doctors;
+package salemby.com.github.medVollApi.domain.doctors;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import salemby.com.github.medVollApi.address.AddressData;
+import salemby.com.github.medVollApi.domain.address.AddressData;
 
 public record DoctorUpdateDTO(
         @NotNull

@@ -1,11 +1,11 @@
-package salemby.com.github.medVollApi.doctors;
+package salemby.com.github.medVollApi.domain.doctors;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import salemby.com.github.medVollApi.address.Address;
+import salemby.com.github.medVollApi.domain.address.Address;
 
 @Table(name = "doctors")
 @Entity(name = "Doctor")

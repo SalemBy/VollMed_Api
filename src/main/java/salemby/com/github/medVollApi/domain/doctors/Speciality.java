@@ -1,4 +1,4 @@
-package salemby.com.github.medVollApi.doctors;
+package salemby.com.github.medVollApi.domain.doctors;
 
 public enum Speciality {
     ORTHOPEDICS,
