@@ -13,7 +13,6 @@ public class ErrorHandling {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity handleError400(MethodArgumentNotValidException e) {
         var errors = e.getFieldErrors();
-
         return ResponseEntity.badRequest().body(errors.stream().map(dataErrorValidation::new).toList());
     }
 
