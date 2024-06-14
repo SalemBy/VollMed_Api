@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import salemby.com.github.medVollApi.domain.user.AuthenticationLoginData;
+import salemby.com.github.medVollApi.domain.user.User;
+import salemby.com.github.medVollApi.infra.security.DataTokenJwtDTO;
+import salemby.com.github.medVollApi.infra.security.TokenService;
 
 @RestController
 @RequestMapping("/login")
@@ -18,12 +21,16 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager manager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid AuthenticationLoginData authenticationData) {
-        var token = new UsernamePasswordAuthenticationToken(authenticationData.login(), authenticationData.password());
-        var authentication = manager.authenticate(token);
+        var authenticationToken = new UsernamePasswordAuthenticationToken(authenticationData.login(), authenticationData.password());
+        var authentication = manager.authenticate(authenticationToken);
 
-        return ResponseEntity.ok().build();
+        var tokenJWT = tokenService.generateToken((User) authentication.getPrincipal());
+        return ResponseEntity.ok(new DataTokenJwtDTO(tokenJWT));
     }
 
 
