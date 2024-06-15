@@ -6,6 +6,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import salemby.com.github.medVollApi.domain.exceptions.ValidationItemException;
 
 @RestControllerAdvice
 public class ErrorHandling {
@@ -20,6 +21,13 @@ public class ErrorHandling {
     public ResponseEntity handleError404() {
         return ResponseEntity.notFound().build();
     }
+
+    @ExceptionHandler(ValidationItemException.class)
+    public ResponseEntity validationError(ValidationItemException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+
 
 
     private record dataErrorValidation(String field, String message){
