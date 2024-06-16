@@ -40,6 +40,10 @@ public class AppointmentCreateService {
         var patient = patientRepository.getReferenceById(data.idPatient());
         var doctor = findDoctor(data);
 
+        if(doctor == null ) {
+            throw new ValidationItemException("No doctor available for this appointment");
+        }
+
         var appointment = new Appointment(null, doctor, patient, data.date());
         appointmentRepository.save(appointment);
 

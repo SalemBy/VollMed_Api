@@ -1,5 +1,6 @@
 package salemby.com.github.medVollApi.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ public class AppointmentsController {
 
     @PostMapping
     @Transactional
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity createAppointment (@RequestBody @Valid DataCreateAppointment data) {
 
         var dto = appointmentCreateService.createAppointment(data);

@@ -1,5 +1,7 @@
 package salemby.com.github.medVollApi.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +15,7 @@ import salemby.com.github.medVollApi.domain.patient.*;
 
 @RestController
 @RequestMapping("patients")
+@SecurityRequirement(name = "bearer-key")
 public class PatientController {
 
     @Autowired
@@ -20,6 +23,7 @@ public class PatientController {
 
     @PostMapping
     @Transactional
+
     public ResponseEntity registerPatient(@RequestBody @Valid PatientRegistrationData data, UriComponentsBuilder uriBuilder) {
         var patient = new Patient(data);
         patientRepository.save(patient);
